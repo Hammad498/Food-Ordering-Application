@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700;800;900&family=Poppins&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Poppins', sans-serif;
+}
+body{
+   /* background: rgb(244, 244, 244); */
+background: rgb(250, 181, 91);
+}
+.animated-image {
+    animation: move 3s ease-in-out infinite alternate;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.25) rotate(3deg);
+    }
+    50% {
+      transform: scale(1) rotate(0deg);
+    }
+    75% {
+      transform: scale(1.25) rotate(-3deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  
+  
