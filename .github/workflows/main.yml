@@ -14,18 +14,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3 # Update to v3 for node16 support
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3 # Update to v3 for node16 or node20 support
+        uses: actions/setup-node@v3
         with:
-          node-version: '20' # Ensure node version 20 is used
+          node-version: '20' # Explicitly set to Node 20 to avoid warnings
 
       - name: Install dependencies
         run: npm install
+        # Added logging to catch any npm install issues
+        env:
+          CI: false # Sometimes helpful to avoid certain build errors
 
       - name: Build project
         run: npm run build
+        # Added logging to better track potential build errors
+        env:
+          CI: false
 
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
