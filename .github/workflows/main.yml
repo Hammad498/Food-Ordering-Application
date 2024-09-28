@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  
 
 jobs:
   build_and_deploy:
@@ -15,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3 # Update to v3 for node16 support
 
       - name: Setup Node.js
-        run: actions/setup-node@v2
-        # with:
-        #   node-version: '20'
+        uses: actions/setup-node@v3 # Update to v3 for node16 or node20 support
+        with:
+          node-version: '20' # Ensure node version 20 is used
 
       - name: Install dependencies
         run: npm install
@@ -33,5 +32,3 @@ jobs:
         with:
           BRANCH: gh-pages
           FOLDER: build
-      
-
