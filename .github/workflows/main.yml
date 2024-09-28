@@ -25,20 +25,19 @@ jobs:
         run: npm install
         env:
           CI: false # Avoid strict CI checks
-        continue-on-error: true # Allows workflow to continue even if npm install fails to show more logs
+        continue-on-error: true # Allows workflow to continue even if npm install fails
 
       - name: Debug: List project structure
         run: ls -la
-        # Listing files to ensure everything is in place after the checkout and install
 
       - name: Build project
         run: npm run build
         env:
           CI: false
-        continue-on-error: true # Allows workflow to continue even if build fails for debugging
+        continue-on-error: true # Allows workflow to continue even if build fails
 
       - name: Deploy to Github Pages
-        if: success() # Ensure deploy only happens if build succeeds
+        if: success() # Ensure deploy only happens if the build succeeds
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           BRANCH: gh-pages
